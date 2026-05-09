@@ -1,27 +1,40 @@
+import carImage from "../assets/car-insurance.jpg"
+import healthImage from "../assets/health-insurance.jpg"
+import homeImage from "../assets/home-insurance.jpg"
+import travelImage from "../assets/travel-insurance.jpg"
+
+
 function Services(){
 
-    const services = [
-      {
-        title:'Araç Sigortası',
-        text:'Kasko, trafik sigortası, yol yardım ve mini onarım desteği.',
-        detail:'Araç sigortası ile aracınızı kaza, hasar, hırsızlık ve yol yardım ihtiyaçlarına karşı güvence altına alabilirsiniz.'
-      },
-      {
-        title:'Sağlık Sigortası',
-        text:'Özel hastane, muayene, tahlil ve online doktor desteği.',
-        detail:'Sağlık sigortası ile özel sağlık kuruluşlarında hızlı ve kapsamlı hizmet alabilirsiniz.'
-      },
-      {
-        title:'Konut Sigortası',
-        text:'Deprem, yangın, hırsızlık ve su baskını koruması.',
-        detail:'Konut sigortası evinizi ve eşyalarınızı beklenmeyen risklere karşı korur.'
-      },
-      {
-        title:'Seyahat Sigortası',
-        text:'Yurt içi ve yurt dışı seyahatlerde tam güvence.',
-        detail:'Seyahat sigortası bagaj kaybı, uçuş iptali ve sağlık desteği sağlar.'
-      }
-    ]
+  const services = [
+    {
+      title:'Araç Sigortası',
+      text:'Kasko, trafik sigortası, yol yardım ve mini onarım desteği.',
+      detail:'Araç sigortası ile aracınızı güvence altına alabilirsiniz.',
+      image: carImage
+    },
+  
+    {
+      title:'Sağlık Sigortası',
+      text:'Özel hastane ve online doktor desteği.',
+      detail:'Sağlık sigortası ile kapsamlı sağlık hizmeti alın.',
+      image: healthImage
+    },
+  
+    {
+      title:'Konut Sigortası',
+      text:'Deprem, yangın ve hırsızlık koruması.',
+      detail:'Konut sigortası evinizi korur.',
+      image: homeImage
+    },
+  
+    {
+      title:'Seyahat Sigortası',
+      text:'Yurt içi ve yurt dışı tam güvence.',
+      detail:'Seyahat sigortası bagaj ve sağlık desteği sağlar.',
+      image: travelImage
+    }
+  ]
   
     return(
       <section id="services" className="section">
@@ -39,7 +52,14 @@ function Services(){
             className="card"
             data-aos="fade-up"
             data-aos-delay={index * 120}
-          >
+
+            >
+              <img
+  src={service.image}
+  alt=""
+  className="service-image"
+/>
+
               <h3>{service.title}</h3>
               <p>{service.text}</p>
   

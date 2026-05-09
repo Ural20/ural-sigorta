@@ -1,11 +1,19 @@
 import { useNavigate } from 'react-router-dom'
+import heroImage from "../assets/hero-insurance.jpg"
 
 function Hero(){
 
   const navigate = useNavigate()
 
   return(
-    <section className="hero">
+    <section className="hero" >
+
+<img
+  src={heroImage}
+  alt=""
+  className="hero-image"
+/>
+
       <div className="hero-inner">
 
         <span className="badge">
