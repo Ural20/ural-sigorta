@@ -1,39 +1,42 @@
-import { useState } from 'react'
+import { useState } from "react"
+import { useTranslation } from "react-i18next"
 import toast from "react-hot-toast"
 
 function OfferForm(){
 
-  const [name,setName] = useState('')
-  const [phone,setPhone] = useState('')
-  const [type,setType] = useState('Araç Sigortası')
+  const { t } = useTranslation()
+
+  const [name,setName] = useState("")
+  const [phone,setPhone] = useState("")
+  const [type,setType] = useState("Araç Sigortası")
   const [offer,setOffer] = useState(null)
 
   const offers = {
-    'Araç Sigortası': {
-      title:'Full Kasko Paketi',
-      price:'2.450₺ / ay',
-      detail:'Yol yardım, mini onarım, çekici ve anlaşmalı servis desteği.'
+    "Araç Sigortası": {
+      title:"Full Kasko Paketi",
+      price:"2.450₺ / ay",
+      detail:"Yol yardım, mini onarım, çekici ve anlaşmalı servis desteği."
     },
-    'Sağlık Sigortası': {
-      title:'Premium Sağlık Paketi',
-      price:'3.200₺ / ay',
-      detail:'Özel hastane, muayene, tahlil ve online doktor desteği.'
+    "Sağlık Sigortası": {
+      title:"Premium Sağlık Paketi",
+      price:"3.200₺ / ay",
+      detail:"Özel hastane, muayene, tahlil ve online doktor desteği."
     },
-    'Konut Sigortası': {
-      title:'Konut Güvence Paketi',
-      price:'1.890₺ / ay',
-      detail:'Deprem, yangın, hırsızlık ve su baskını güvencesi.'
+    "Konut Sigortası": {
+      title:"Konut Güvence Paketi",
+      price:"1.890₺ / ay",
+      detail:"Deprem, yangın, hırsızlık ve su baskını güvencesi."
     },
-    'Seyahat Sigortası': {
-      title:'Global Seyahat Paketi',
-      price:'990₺ / ay',
-      detail:'Bagaj kaybı, uçuş iptali ve yurt dışı sağlık desteği.'
+    "Seyahat Sigortası": {
+      title:"Global Seyahat Paketi",
+      price:"990₺ / ay",
+      detail:"Bagaj kaybı, uçuş iptali ve yurt dışı sağlık desteği."
     }
   }
 
   const generateOffer = () => {
     if(!name || !phone){
-      alert('Lütfen ad soyad ve telefon bilgilerini gir.')
+      toast.error(t("fillAllFields"))
       return
     }
 
@@ -42,44 +45,44 @@ function OfferForm(){
       name,
       phone,
       type,
-      status: 'Beklemede',
-      date: new Date().toLocaleDateString('tr-TR'),
+      status:"Beklemede",
+      date:new Date().toLocaleDateString("tr-TR"),
       ...offers[type]
     })
   }
 
   const saveOffer = () => {
-    const isLoggedIn = localStorage.getItem('isLoggedIn')
+    const isLoggedIn = localStorage.getItem("isLoggedIn")
 
-    if(isLoggedIn !== 'true'){
-      alert('Teklifi kaydetmek için önce giriş yapmalısınız.')
+    if(isLoggedIn !== "true"){
+      toast.error(t("loginRequired"))
       return
     }
 
-    const savedOffers = JSON.parse(localStorage.getItem('uralOffers')) || []
+    const savedOffers = JSON.parse(localStorage.getItem("uralOffers")) || []
 
     savedOffers.push(offer)
 
-    localStorage.setItem('uralOffers', JSON.stringify(savedOffers))
+    localStorage.setItem("uralOffers", JSON.stringify(savedOffers))
 
-    toast.success("Teklif kaydedildi")
+    toast.success(t("offerSaved"))
   }
 
   return(
     <section className="offer-section">
 
-      <h2>Ücretsiz Teklif Al</h2>
+      <h2>{t("offerTitle")}</h2>
 
       <input
         className="input"
-        placeholder="Ad Soyad"
+        placeholder={t("name")}
         value={name}
         onChange={e=>setName(e.target.value)}
       />
 
       <input
         className="input"
-        placeholder="Telefon"
+        placeholder={t("phone")}
         value={phone}
         onChange={e=>setPhone(e.target.value)}
       />
@@ -96,22 +99,29 @@ function OfferForm(){
       </select>
 
       <button onClick={generateOffer} className="primary">
-        Teklif Oluştur
+        {t("createOffer")}
       </button>
 
       {offer && (
         <div className="offer-result">
           <h3>{offer.title}</h3>
-          <p>{offer.name} için özel {offer.type} teklifi</p>
-          <div className="price">{offer.price}</div>
+
+          <p>
+            {offer.name} - {offer.type}
+          </p>
+
+          <div className="price">
+            {offer.price}
+          </div>
+
           <p>{offer.detail}</p>
 
           <button
             onClick={saveOffer}
             className="primary"
-            style={{marginTop:'20px'}}
+            style={{marginTop:"20px"}}
           >
-            Teklifi Onayla ve Kaydet
+            {t("saveOffer")}
           </button>
         </div>
       )}

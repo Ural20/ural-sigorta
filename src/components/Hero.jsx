@@ -1,48 +1,55 @@
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom"
+import { useTranslation } from "react-i18next"
 import heroImage from "../assets/hero-insurance.jpg"
 
 function Hero(){
 
   const navigate = useNavigate()
+  const { t } = useTranslation()
 
   return(
-    <section className="hero" >
+    <section className="hero">
 
-<img
-  src={heroImage}
-  alt=""
-  className="hero-image"
-/>
+      <img
+        src={heroImage}
+        alt=""
+        className="hero-image"
+      />
 
       <div className="hero-inner">
 
         <span className="badge">
-          Yeni Nesil Dijital Sigorta
+          {t("badge")}
         </span>
 
         <h1>
-          Geleceğini Ural Sigorta ile Güvence Altına Al
+          {t("heroTitle")}
         </h1>
 
         <p>
-          Araç, sağlık, konut ve seyahat sigortalarında hızlı teklif,
-          online başvuru ve dijital poliçe deneyimi.
+          {t("heroText")}
         </p>
 
         <div className="hero-buttons">
-          <button onClick={()=>navigate('/apply')} className="secondary">
-            Hemen Başvur
+
+          <button
+            onClick={()=>navigate("/apply")}
+            className="secondary"
+          >
+            {t("applyNow")}
           </button>
 
           <button
-            onClick={()=>document.getElementById('services').scrollIntoView({behavior:'smooth'})}
+            onClick={()=>document.getElementById("services").scrollIntoView({behavior:"smooth"})}
             className="primary"
           >
-            Detaylı İncele
+            {t("details")}
           </button>
+
         </div>
 
       </div>
+
     </section>
   )
 }
