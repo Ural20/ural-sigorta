@@ -322,3 +322,77 @@ cursor: pointer;
   border-radius:18px;
   margin-bottom:20px;
 }
+
+@media (max-width: 768px){
+
+  .nav-inner{
+    width:92%;
+    flex-direction:column;
+    gap:18px;
+  }
+
+  .nav-links{
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:12px;
+  }
+
+  .nav-links a,
+  .nav-links button{
+    font-size:14px;
+  }
+
+  .hero{
+    min-height:auto;
+    padding:120px 20px 80px;
+  }
+
+  .hero-inner{
+    width:92%;
+  }
+
+  .hero h1{
+    font-size:42px;
+    line-height:1.15;
+  }
+
+  .hero p{
+    font-size:17px;
+  }
+
+  .hero-image{
+    width:100%;
+    opacity:.15;
+  }
+
+  .offer-section{
+    width:92%;
+    margin-top:-40px;
+    padding:30px;
+  }
+
+  .section{
+    width:92%;
+    padding:70px 0;
+  }
+
+  .section h2{
+    font-size:38px;
+  }
+
+  .grid{
+    grid-template-columns:1fr;
+    gap:24px;
+  }
+
+  .card{
+    width:100%;
+  }
+
+  .footer-inner{
+    width:92%;
+    grid-template-columns:1fr;
+    gap:30px;
+  }
+
+}
