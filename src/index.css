@@ -396,3 +396,76 @@ cursor: pointer;
   }
 
 }
+
+/* Global layout düzeni */
+*{
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.section,
+.offer-section,
+.hero-inner,
+.footer-inner{
+  max-width: 1180px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Bölüm boşluklarını standartlaştır */
+.section{
+  padding: 90px 24px;
+}
+
+.offer-section{
+  padding: 55px;
+}
+
+.hero{
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+/* Sola dayalı düzen */
+.section h2,
+.section p,
+.offer-section h2,
+.offer-section p,
+.hero-inner,
+.card,
+.footer-inner{
+  text-align: left;
+}
+
+/* Kart iç boşluk standardı */
+.card{
+  padding: 32px;
+}
+
+/* Grid boşluk standardı */
+.grid{
+  gap: 28px;
+}
+
+/* Form elemanları */
+.input{
+  margin-bottom: 16px;
+}
+
+/* Mobil düzen */
+@media (max-width: 768px){
+  .section{
+    padding: 70px 20px;
+  }
+
+  .offer-section{
+    padding: 32px 22px;
+  }
+
+  .card{
+    padding: 26px;
+  }
+
+  .hero-inner{
+    width:100%;
+  }
+}
